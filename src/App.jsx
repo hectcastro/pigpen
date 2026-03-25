@@ -253,7 +253,7 @@ export default function App() {
 
       {/* ── FOOTER ── */}
       <footer className={styles.footer}>
-        <span>PIGPEN!!!</span>
+        <span>PIGPEN!!! By Elle Castro</span>
       </footer>
     </div>
   );
