@@ -1,0 +1,381 @@
+/* Font stacks and @keyframes blink are defined in index.html :root */
+
+/* ── ROOT ── */
+.root {
+  min-height: 100vh;
+  background: var(--bg);
+  font-family: var(--font-sans);
+  color: var(--fg);
+}
+
+/* ── NAV ── */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 28px;
+  border-bottom: 1px solid var(--border-subtle);
+  position: sticky;
+  top: 0;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 10;
+}
+
+.navBrand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navTitle {
+  font-weight: 700;
+  font-size: 1.55rem;
+  letter-spacing: -0.01em;
+}
+
+.navPills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* ── PILL ── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 20px;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--fg-2);
+  font-size: 1.05rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.pill--active {
+  border-color: var(--pill-active-bg);
+  background: var(--pill-active-bg);
+  color: var(--pill-active-fg);
+}
+
+/* ── THEME TOGGLE ── */
+.themeToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  background: transparent;
+  color: var(--fg-2);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.themeToggle:hover {
+  background: var(--bg-hover);
+  border-color: var(--fg-6);
+}
+
+/* ── HERO ── */
+.hero {
+  text-align: center;
+  padding: 56px 24px 28px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.heroHeading {
+  font-size: clamp(2.6rem, 6vw, 3.8rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin: 0 0 14px;
+}
+
+.heroSub {
+  font-size: 1.4rem;
+  color: var(--fg-2);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── MAIN ── */
+.main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 24px 64px;
+}
+
+/* ── OUTPUT CARD ── */
+.outputCard {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-card);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.outputCardHeader {
+  margin-bottom: 14px;
+}
+
+.outputCardLabel {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fg-4);
+  font-family: var(--font-sans);
+}
+
+/* ── ENCODE ── */
+.textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 18px;
+  font-size: 1.3rem;
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  border: 1px solid var(--border-md);
+  border-radius: 12px;
+  outline: none;
+  resize: vertical;
+  color: var(--fg);
+  background: var(--bg-subtle);
+  transition: border-color 0.15s;
+}
+
+.textarea:focus {
+  border-color: var(--fg-3);
+}
+
+.encodeOutput {
+  margin-top: 20px;
+}
+
+.glyphRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3px;
+  min-height: 48px;
+}
+
+.glyphWordSpacer {
+  width: 18px;
+}
+
+.glyphWord {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+
+.glyphPassthrough {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--fg-4);
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+}
+
+.plaintextHint {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--fg-3);
+  word-break: break-word;
+}
+
+.plaintextHintLabel {
+  color: var(--fg-6);
+  margin-right: 6px;
+}
+
+/* ── DECODE ── */
+.decodeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+  gap: 6px;
+}
+
+.decodeBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0 8px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  min-height: 88px;
+  color: var(--fg);
+}
+
+.decodeBtn:hover {
+  background: var(--bg-hover);
+  border-color: var(--fg-6);
+}
+
+.decodeBtnLabel {
+  font-size: 0.8rem;
+  color: var(--fg-4);
+  margin-top: 3px;
+  font-weight: 500;
+}
+
+.controlBtns {
+  display: flex;
+  gap: 6px;
+  margin: 12px 0 18px;
+}
+
+.controlBtn {
+  padding: 14px 0;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--fg-2);
+  cursor: pointer;
+  transition: all 0.12s ease;
+  -webkit-appearance: none;
+}
+
+.controlBtn:hover {
+  background: var(--bg-hover);
+  border-color: var(--fg-6);
+}
+
+.decodedOutput {
+  font-family: var(--font-sans);
+  font-size: 1.7rem;
+  color: var(--fg);
+  min-height: 36px;
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+.decodedPlaceholder {
+  color: var(--fg-5);
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: var(--fg-6);
+  margin-left: 3px;
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+
+/* ── REFERENCE ── */
+.refSection {
+  margin-top: 32px;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 28px;
+}
+
+.refHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.refHeading {
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.refGroup {
+  margin-bottom: 24px;
+}
+
+.refGroupHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.refGroupLabel {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.refTagBadge {
+  font-size: 0.8rem;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-weight: 500;
+}
+
+.refTagBadge--dot {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.refTagBadge--nodot {
+  background: var(--bg-hover);
+  color: var(--fg-3);
+}
+
+.refGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+  gap: 6px;
+}
+
+.refCell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 0 4px;
+  background: var(--bg-subtle);
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+}
+
+.refCellLabel {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--fg-3);
+  margin-top: 5px;
+}
+
+/* ── FOOTER ── */
+.footer {
+  border-top: 1px solid var(--border-subtle);
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--fg-3);
+  max-width: 640px;
+  margin: 0 auto;
+}

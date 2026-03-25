@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PIGPEN!!!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      body { -webkit-font-smoothing: antialiased; }
+      :root {
+        --font-sans: 'Source Sans 3', 'Segoe UI', system-ui, -apple-system, sans-serif;
+        --font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Courier New', monospace;
+
+        --bg:             #fff;
+        --bg-subtle:      #fafafa;
+        --bg-hover:       #f0f0f0;
+        --fg:             #000;
+        --fg-2:           #666;
+        --fg-3:           #999;
+        --fg-4:           #aaa;
+        --fg-5:           #bbb;
+        --fg-6:           #ccc;
+        --border:         #e5e5e5;
+        --border-md:      #e0e0e0;
+        --border-subtle:  #f0f0f0;
+        --border-card:    #e8e8e8;
+        --nav-bg:         rgba(255, 255, 255, 0.92);
+        --pill-active-bg: #000;
+        --pill-active-fg: #fff;
+      }
+
+      [data-theme="dark"] {
+        --bg:             #111;
+        --bg-subtle:      #1c1c1c;
+        --bg-hover:       #2a2a2a;
+        --fg:             #f0f0f0;
+        --fg-2:           #aaa;
+        --fg-3:           #777;
+        --fg-4:           #666;
+        --fg-5:           #555;
+        --fg-6:           #444;
+        --border:         #2e2e2e;
+        --border-md:      #333;
+        --border-subtle:  #222;
+        --border-card:    #2a2a2a;
+        --nav-bg:         rgba(17, 17, 17, 0.92);
+        --pill-active-bg: #f0f0f0;
+        --pill-active-fg: #000;
+      }
+      @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
