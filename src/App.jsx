@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import styles from "./App.module.css";
-import { GRID, XMAP, ALPHA, buildMaps } from "./cipher.js";
+import { GRID, XMAP, ALPHA } from "./cipher.js";
 import PigpenChar from "./Glyphs.jsx";
 
 function getInitialTheme() {
@@ -43,8 +43,6 @@ const REF_SECTIONS = [
   { label: "X + Dot", letters: "WXYZ", tag: "dot" },
 ];
 
-const { encodeMap, decodeMap } = buildMaps();
-
 export default function App() {
   const [mode, setMode] = useState("encode");
   const [text, setText] = useState("");
@@ -60,8 +58,8 @@ export default function App() {
   }
 
   const handleDecodeClick = useCallback((slotLetter) => {
-    setDecoded((p) => p + (decodeMap[slotLetter] || slotLetter));
-  }, [decodeMap]);
+    setDecoded((p) => p + slotLetter);
+  }, []);
 
   const encodeWords = text.split(/(\s+)/);
 
@@ -142,9 +140,8 @@ export default function App() {
                         <span key={wi} className={styles.glyphWord}>
                           {seg.split("").map((ch, ci) => {
                             const u = ch.toUpperCase();
-                            const symbolLetter = encodeMap[u];
-                            if (symbolLetter && (GRID[symbolLetter] || XMAP[symbolLetter])) {
-                              return <PigpenChar key={ci} letter={symbolLetter} size={44} color="currentColor"/>;
+                            if ((GRID[u] || XMAP[u]) && ALPHA.includes(u)) {
+                              return <PigpenChar key={ci} letter={u} size={44} color="currentColor"/>;
                             }
                             return <span key={ci} className={styles.glyphPassthrough}>{ch}</span>;
                           })}
@@ -166,17 +163,16 @@ export default function App() {
           <>
             <div className={styles.decodeGrid}>
               {ALPHA.map((slotLetter) => {
-                const decodedLetter = decodeMap[slotLetter];
                 return (
                   <button
                     key={slotLetter}
                     onClick={() => handleDecodeClick(slotLetter)}
-                    title={`Decodes to: ${decodedLetter}`}
+                    title={`Decodes to: ${slotLetter}`}
                     className={styles.decodeBtn}
                   >
                     <PigpenChar letter={slotLetter} size={52} color="currentColor"/>
                     <span className={styles.decodeBtnLabel}>
-                      {decodedLetter}
+                      {slotLetter}
                     </span>
                   </button>
                 );
@@ -232,12 +228,11 @@ export default function App() {
                 </div>
                 <div className={styles.refGrid}>
                   {sec.letters.split("").map((slotLetter) => {
-                    const plainLetter = decodeMap[slotLetter];
                     return (
                       <div key={slotLetter} className={styles.refCell}>
                         <PigpenChar letter={slotLetter} size={44} color="currentColor"/>
                         <span className={styles.refCellLabel}>
-                          {plainLetter}
+                          {slotLetter}
                         </span>
                       </div>
                     );

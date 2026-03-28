@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
-import { ALPHA, GRID, XMAP, buildMaps } from "./cipher.js";
+import { ALPHA, GRID, XMAP } from "./cipher.js";
 
-/* ───────────────────── ALPHA ───────────────────── */
+/* ───────── ALPHA ───────── */
 
 describe("ALPHA", () => {
   it("contains all 26 letters", () => {
@@ -13,7 +13,7 @@ describe("ALPHA", () => {
   });
 });
 
-/* ───────────────────── GRID ───────────────────── */
+/* ───────── GRID ───────── */
 
 describe("GRID", () => {
   it("covers letters A–R (18 entries)", () => {
@@ -42,7 +42,7 @@ describe("GRID", () => {
   });
 });
 
-/* ───────────────────── XMAP ───────────────────── */
+/* ───────── XMAP ───────── */
 
 describe("XMAP", () => {
   it("covers letters S–Z (8 entries)", () => {
@@ -68,23 +68,5 @@ describe("XMAP", () => {
     for (const letter of "WXYZ") {
       expect(XMAP[letter].d, letter).toBe(1);
     }
-  });
-});
-
-/* ───────────────────── buildMaps ───────────────────── */
-
-describe("buildMaps", () => {
-  it("encodeMap and decodeMap are identity mappings for all 26 letters", () => {
-    const { encodeMap, decodeMap } = buildMaps();
-    for (const letter of ALPHA) {
-      expect(encodeMap[letter]).toBe(letter);
-      expect(decodeMap[letter]).toBe(letter);
-    }
-  });
-
-  it("both maps contain all 26 letters as keys", () => {
-    const { encodeMap, decodeMap } = buildMaps();
-    expect(Object.keys(encodeMap)).toHaveLength(26);
-    expect(Object.keys(decodeMap)).toHaveLength(26);
   });
 });

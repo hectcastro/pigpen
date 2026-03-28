@@ -34,12 +34,3 @@ export const X_DOT = {
 
 export const ALPHA = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
-export function buildMaps() {
-  const encodeMap = {};
-  const decodeMap = {};
-  for (const letter of ALPHA) {
-    encodeMap[letter] = letter;
-    decodeMap[letter] = letter;
-  }
-  return { encodeMap, decodeMap };
-}
