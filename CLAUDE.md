@@ -18,6 +18,7 @@ src/
   fonts/                        ← Vendored Departure Mono (woff2) + its SIL OFL license text
 tests/
   CipherTest.elm                ← elm-test suite for Cipher.elm
+review/                         ← elm-review config project (its own elm.json + ReviewConfig.elm)
 ```
 
 ## Architecture
@@ -44,10 +45,11 @@ tests/
 - Two font tokens, both declared in `index.html`'s `:root`: `--font-sans` (Source Sans 3, Google-hosted) for body copy, inputs, and pills; `--font-pixel` (Departure Mono, self-hosted from `src/fonts/`) for the brand title, headings, small-caps labels/badges, and the two glyph-adjacent mono slots. Departure Mono is a single weight — every rule using it pins `font-weight: 400` — and sized in flat `px` at multiples of 11 per the font's own crispness guidance, not `rem`.
 
 ### Toolchain
-- [mise](https://mise.jdx.dev/) owns `elm`, `node`, `elm-test` (npm backend), and `elm-format` (github backend, `avh4/elm-format`) — no `package.json`, no `npx`
+- [mise](https://mise.jdx.dev/) owns `elm`, `node`, `elm-test` (npm backend), `elm-format` (github backend, `avh4/elm-format`), and `elm-review` (npm backend) — no `package.json`, no `npx`
 - `mise run dev` — `elm reactor`
 - `mise run test` — `elm-test`
 - `mise run format` — `elm-format --yes src tests`
+- `mise run review` — `elm-review`, config lives in `review/src/ReviewConfig.elm` (scaffolded from `jfmengels/elm-review-config/application`, the maintainer's own starter template — unused code, missing type annotations, `Debug.*`, `exposing (..)`)
 - `mise run build` — `elm make --optimize`, then copies `index.html`, `src/app.css`, and `src/fonts/` into `dist/`
 
 ### Deployment

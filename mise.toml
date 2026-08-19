@@ -2,6 +2,7 @@
 elm = { version = "0.19.1", bin = "elm" }
 "github:avh4/elm-format" = "0.8.8"
 node = "24"
+"npm:elm-review" = "2.13.5"
 "npm:elm-test" = "0.19.1-revision17"
 
 [tasks.dev]
@@ -12,6 +13,9 @@ run = "elm-test"
 
 [tasks.format]
 run = "elm-format --yes src tests"
+
+[tasks.review]
+run = "elm-review"
 
 [tasks.build]
 run = [

@@ -23,9 +23,11 @@ vb =
 view : Int -> Glyph -> Svg msg
 view size g =
     let
+        sizeStr : String
         sizeStr =
             String.fromInt size
 
+        vbStr : String
         vbStr =
             "0 0 " ++ String.fromFloat vb ++ " " ++ String.fromFloat vb
     in

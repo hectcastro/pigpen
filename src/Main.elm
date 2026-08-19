@@ -1,4 +1,4 @@
-port module Main exposing (main)
+port module Main exposing (Mode, Model, Msg, Theme, main)
 
 import Browser
 import Cipher
@@ -104,6 +104,7 @@ update msg model =
 
         ToggleTheme ->
             let
+                next : Theme
                 next =
                     case model.theme of
                         Dark ->
@@ -346,6 +347,7 @@ viewDecode decoded =
 viewDecodeBtn : Char -> Html Msg
 viewDecodeBtn letter =
     let
+        label : String
         label =
             String.fromChar letter
     in
