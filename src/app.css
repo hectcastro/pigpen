@@ -1,5 +1,14 @@
 /* Font stacks and @keyframes blink are defined in index.html :root */
 
+/* Departure Mono v1.500 — SIL OFL 1.1 — https://departuremono.com */
+@font-face {
+  font-family: 'Departure Mono';
+  src: url('fonts/DepartureMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ── ROOT ── */
 .root {
   min-height: 100vh;
@@ -30,9 +39,9 @@
 }
 
 .navTitle {
-  font-weight: 700;
-  font-size: 1.55rem;
-  letter-spacing: -0.01em;
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  font-size: 22px;
 }
 
 .navPills {
@@ -95,11 +104,17 @@
 }
 
 .heroHeading {
-  font-size: clamp(2.6rem, 6vw, 3.8rem);
-  font-weight: 700;
-  letter-spacing: -0.025em;
+  font-family: var(--font-pixel);
+  font-size: 33px;
+  font-weight: 400;
   line-height: 1.15;
   margin: 0 0 14px;
+}
+
+@media (min-width: 640px) {
+  .heroHeading {
+    font-size: 44px;
+  }
 }
 
 .heroSub {
@@ -129,12 +144,12 @@
 }
 
 .outputCardLabel {
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--fg-4);
-  font-family: var(--font-sans);
 }
 
 /* ── ENCODE ── */
@@ -187,8 +202,9 @@
   width: 44px;
   height: 44px;
   color: var(--fg-4);
-  font-family: var(--font-mono);
-  font-size: 1.15rem;
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  font-size: 22px;
 }
 
 .plaintextHint {
@@ -197,8 +213,9 @@
   background: var(--bg-subtle);
   border: 1px solid var(--border-subtle);
   border-radius: 8px;
-  font-family: var(--font-mono);
-  font-size: 0.95rem;
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  font-size: 11px;
   color: var(--fg-3);
   word-break: break-word;
 }
@@ -236,10 +253,11 @@
 }
 
 .decodeBtnLabel {
-  font-size: 0.8rem;
+  font-family: var(--font-pixel);
+  font-size: 11px;
   color: var(--fg-4);
   margin-top: 3px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .controlBtns {
@@ -310,9 +328,9 @@
 }
 
 .refHeading {
-  font-size: 1.55rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-family: var(--font-pixel);
+  font-size: 22px;
+  font-weight: 400;
   margin: 0;
 }
 
@@ -328,15 +346,17 @@
 }
 
 .refGroupLabel {
-  font-size: 1rem;
-  font-weight: 600;
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  font-weight: 400;
 }
 
 .refTagBadge {
-  font-size: 0.8rem;
+  font-family: var(--font-pixel);
+  font-size: 11px;
   padding: 2px 8px;
   border-radius: 9999px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .refTagBadge--dot {
@@ -366,8 +386,9 @@
 }
 
 .refCellLabel {
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  font-weight: 400;
   color: var(--fg-3);
   margin-top: 5px;
 }
@@ -379,7 +400,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.9rem;
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  font-weight: 400;
   color: var(--fg-3);
   max-width: 640px;
   margin: 0 auto;

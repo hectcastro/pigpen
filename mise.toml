@@ -18,4 +18,5 @@ run = [
   "mkdir -p dist",
   "elm make src/Main.elm --optimize --output=dist/elm.js",
   "cp index.html src/app.css dist/",
+  "cp -R src/fonts dist/fonts",
 ]

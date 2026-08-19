@@ -15,6 +15,7 @@ src/
   Glyphs.elm                    ← elm/svg rendering: Glyph -> Svg msg
   Main.elm                      ← Browser.element app: model, update, view, icons, setTheme port
   app.css                       ← All styles as plain CSS classes (BEM-style modifiers)
+  fonts/                        ← Vendored Departure Mono (woff2) + its SIL OFL license text
 tests/
   CipherTest.elm                ← elm-test suite for Cipher.elm
 ```
@@ -40,12 +41,14 @@ tests/
 - Reference is an independent overlay (`showRef`), not a third mode — it renders below whichever of Encode/Decode is active
 - `port setTheme : String -> Cmd msg` is the only side effect; `index.html`'s boot script persists it to `localStorage` and writes `document.documentElement.dataset.theme` (that attribute lives on `<html>`, outside Elm's mounted node, so it can't be touched from Elm directly)
 - All styling via plain CSS classes with BEM-style modifiers (e.g. `pill--active`, `controlBtn--space`)
+- Two font tokens, both declared in `index.html`'s `:root`: `--font-sans` (Source Sans 3, Google-hosted) for body copy, inputs, and pills; `--font-pixel` (Departure Mono, self-hosted from `src/fonts/`) for the brand title, headings, small-caps labels/badges, and the two glyph-adjacent mono slots. Departure Mono is a single weight — every rule using it pins `font-weight: 400` — and sized in flat `px` at multiples of 11 per the font's own crispness guidance, not `rem`.
 
 ### Toolchain
-- [mise](https://mise.jdx.dev/) owns `elm`, `node`, and `elm-test` (via mise's npm backend) — no `package.json`, no `npx`
+- [mise](https://mise.jdx.dev/) owns `elm`, `node`, `elm-test` (npm backend), and `elm-format` (github backend, `avh4/elm-format`) — no `package.json`, no `npx`
 - `mise run dev` — `elm reactor`
 - `mise run test` — `elm-test`
-- `mise run build` — `elm make --optimize` then copies `index.html` + `src/app.css` into `dist/`
+- `mise run format` — `elm-format --yes src tests`
+- `mise run build` — `elm make --optimize`, then copies `index.html`, `src/app.css`, and `src/fonts/` into `dist/`
 
 ### Deployment
 - GitHub Actions workflow: `test` → `build` → `deploy` (each job gates the next), using `jdx/mise-action` to install the toolchain
