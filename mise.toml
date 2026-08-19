@@ -1,0 +1,21 @@
+[tools]
+elm = { version = "0.19.1", bin = "elm" }
+"github:avh4/elm-format" = "0.8.8"
+node = "24"
+"npm:elm-test" = "0.19.1-revision17"
+
+[tasks.dev]
+run = "elm reactor"
+
+[tasks.test]
+run = "elm-test"
+
+[tasks.format]
+run = "elm-format --yes src tests"
+
+[tasks.build]
+run = [
+  "mkdir -p dist",
+  "elm make src/Main.elm --optimize --output=dist/elm.js",
+  "cp index.html src/app.css dist/",
+]

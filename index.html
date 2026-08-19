@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="app.css" rel="stylesheet" />
     <style>
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
       body { -webkit-font-smoothing: antialiased; }
@@ -55,6 +56,23 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script src="elm.js"></script>
+    <script>
+      function getInitialTheme() {
+        var stored = localStorage.getItem("theme");
+        if (stored === "dark" || stored === "light") return stored;
+        return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+
+      var theme = getInitialTheme();
+      document.documentElement.dataset.theme = theme;
+
+      var app = Elm.Main.init({ node: document.getElementById("root"), flags: theme });
+
+      app.ports.setTheme.subscribe(function (next) {
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem("theme", next);
+      });
+    </script>
   </body>
 </html>

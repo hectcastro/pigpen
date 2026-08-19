@@ -249,6 +249,7 @@
 }
 
 .controlBtn {
+  flex: 1;
   padding: 14px 0;
   background: var(--bg-subtle);
   border: 1px solid var(--border-subtle);
@@ -265,6 +266,10 @@
 .controlBtn:hover {
   background: var(--bg-hover);
   border-color: var(--fg-6);
+}
+
+.controlBtn--space {
+  flex: 3;
 }
 
 .decodedOutput {
